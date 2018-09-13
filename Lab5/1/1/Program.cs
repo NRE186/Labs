@@ -6,23 +6,18 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            int n = 8, m = 7;
-            int tmp;
             int[,] mas = new int[8, 7];
             Random rand = new Random();
 
             Console.WriteLine("Первоначальный массив");
 
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 7; j++)
-                {
+            for (int i = 0; i < mas.GetLength(0); i++)
+                for (int j = 0; j < mas.GetLength(1); j++)
                     mas[i, j] = rand.Next(-20, 20);
-                }
-            }
-            for (int i = 0; i < 8; i++)
+
+            for (int i = 0; i < mas.GetLength(0); i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < mas.GetLength(1); j++)
                 {
                     Console.Write(mas[i, j] + " ");
                 }
