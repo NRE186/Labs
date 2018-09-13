@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _2
 {
@@ -36,9 +32,7 @@ namespace _2
                 Console.WriteLine();
             }
             Console.WriteLine();
-
             Console.WriteLine("Колличество отрицательных элементов - " + x);
-
             Console.ReadKey();
         }
     }

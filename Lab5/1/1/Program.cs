@@ -7,13 +7,13 @@ namespace ConsoleApplication2
         static void Main(string[] args)
         {
             int[,] mas = new int[8, 7];
-            Random rand = new Random();
+            Random rnd = new Random();
 
             Console.WriteLine("Первоначальный массив");
 
             for (int i = 0; i < mas.GetLength(0); i++)
                 for (int j = 0; j < mas.GetLength(1); j++)
-                    mas[i, j] = rand.Next(-20, 20);
+                    mas[i, j] = rnd.Next(-20, 20);
 
             for (int i = 0; i < mas.GetLength(0); i++)
             {
