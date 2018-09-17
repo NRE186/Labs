@@ -74,7 +74,6 @@ namespace _1
                     needed.Add(c);
                 }
             }
-            int x = needed.Count;
             Console.WriteLine();
             needed.ForEach(Print);
             Console.ReadKey();
