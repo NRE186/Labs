@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _3
 {
@@ -6,6 +7,7 @@ namespace _3
     {
         static void Main(string[] args)
         {
+            List<int> elm = new List<int>();
             int res = 0;
             int[,] mas = new int[4, 5];
             Random rnd = new Random();
@@ -26,6 +28,7 @@ namespace _3
                 {
                     if (mas[i, j] < x && mas[i,j] % 2 == 0)
                     {
+                        elm.Add(mas[i, j]);
                         res++;
                     }
                     Console.Write(mas[i, j] + " ");
@@ -33,7 +36,12 @@ namespace _3
                 Console.WriteLine();
             }
             Console.WriteLine();
-            Console.WriteLine("Колличество элементов меньших " + x + "и кратных двум - " + res);
+            Console.WriteLine("Колличество элементов меньших " + x + " и кратных двум - " + res);
+            Console.WriteLine("Числа меньшие " + x + " и кратные 2 - ");
+            foreach (int s in elm)
+            {
+                Console.WriteLine(s);
+            }
             Console.ReadKey();
         }
     }

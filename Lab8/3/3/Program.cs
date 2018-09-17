@@ -23,7 +23,7 @@ namespace _3
                         {
                             Console.WriteLine(line);
                         }
-                        if (split[0].Length != 1)
+                        else
                         {
                             sLine.Add(line);
                         }
