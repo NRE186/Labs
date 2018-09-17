@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _2
 {
@@ -6,6 +7,7 @@ namespace _2
     {
         static void Main(string[] args)
         {
+            List<int> elm = new List<int>();
             int n = 10,x = 0;
             int[,] mas = new int[n, n];
             Random rnd = new Random();
@@ -26,6 +28,7 @@ namespace _2
                     if(mas[i,j] < 0)
                     {
                         x++;
+                        elm.Add(mas[i,j]);
                     }
                     Console.Write(mas[i, j] + " ");
                 }
@@ -33,6 +36,11 @@ namespace _2
             }
             Console.WriteLine();
             Console.WriteLine("Колличество отрицательных элементов - " + x);
+            Console.WriteLine("Отрицательные числа");
+            foreach (int s in elm)
+            {
+                Console.Write(s + " ");
+            }
             Console.ReadKey();
         }
     }

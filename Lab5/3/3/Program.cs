@@ -37,10 +37,10 @@ namespace _3
             }
             Console.WriteLine();
             Console.WriteLine("Колличество элементов меньших " + x + " и кратных двум - " + res);
-            Console.WriteLine("Числа меньшие " + x + " и кратные 2 - ");
+            Console.Write("Числа меньшие " + x + " и кратные 2 - ");
             foreach (int s in elm)
             {
-                Console.WriteLine(s);
+                Console.Write(s + " ");
             }
             Console.ReadKey();
         }
