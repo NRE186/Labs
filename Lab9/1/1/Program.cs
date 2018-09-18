@@ -65,6 +65,7 @@ namespace _1
             committees[7].serial_pas = 6842;
 
             List<Committee> needed = new List<Committee>();
+            Console.WriteLine("Введите улицу, данные по которой желаете узанать");
             string s = Console.ReadLine();
 
             foreach (Committee c in committees)
