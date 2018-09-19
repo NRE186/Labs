@@ -7,19 +7,14 @@ namespace _6
     {
         static void Main(string[] args)
         {
-            List<string> family = new List<string>();
             string[] fam = { "Рахманинов", "Иванов", "Петров", "Сидоров", "Дмитров", "Радович", "Беляев", "Аршавин" };
             for (int i = 0; i < 8; i++)
             {
                 string val = "Ра";
                 if (fam[i].Contains(val))
                 {
-                    family.Add(fam[i]);
+                    Console.WriteLine(fam[i]);
                 }
-            }
-            foreach (string f in family)
-            {
-                Console.Write(f + " ");
             }
             Console.ReadKey();
         }
