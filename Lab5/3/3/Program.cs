@@ -9,6 +9,7 @@ namespace _3
         {
             List<int> elm = new List<int>();
             int res = 0;
+            int s = 0;
             int[,] mas = new int[4, 5];
             Random rnd = new Random();
 
@@ -30,6 +31,7 @@ namespace _3
                     {
                         elm.Add(mas[i, j]);
                         res++;
+                        s += mas[i, j];
                     }
                     Console.Write(mas[i, j] + " ");
                 }
@@ -37,11 +39,7 @@ namespace _3
             }
             Console.WriteLine();
             Console.WriteLine("Колличество элементов меньших " + x + " и кратных двум - " + res);
-            Console.Write("Числа меньшие " + x + " и кратные 2 - ");
-            foreach (int s in elm)
-            {
-                Console.Write(s + " ");
-            }
+            Console.WriteLine("Сумма этих элементов = " + s);
             Console.ReadKey();
         }
     }
