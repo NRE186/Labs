@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _6
 {
@@ -6,22 +7,19 @@ namespace _6
     {
         static void Main(string[] args)
         {
-            string[] a = new string[8];
+            List<string> family = new List<string>();
             string[] fam = { "Рахманинов", "Иванов", "Петров", "Сидоров", "Дмитров", "Радович", "Беляев", "Аршавин" };
             for (int i = 0; i < 8; i++)
             {
                 string val = "Ра";
                 if (fam[i].Contains(val))
                 {
-                    a[i] = fam[i];
+                    family.Add(fam[i]);
                 }
             }
-            for (int i = 0; i < 8; i++)
+            foreach (string f in family)
             {
-                if (a[i] != null)
-                {
-                    Console.WriteLine(a[i]);
-                }
+                Console.Write(f + " ");
             }
             Console.ReadKey();
         }
