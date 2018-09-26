@@ -55,6 +55,7 @@ namespace _2
                     needed.Add(pc);
                 }
             }
+            Console.WriteLine("Информация о компьютерах стоимость, которых < 6000 рублей");
             needed.ForEach(Print);
             Console.ReadKey();
         }
