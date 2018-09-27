@@ -6,16 +6,19 @@ namespace _2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите eps");
-            double eps = Convert.ToDouble(Console.ReadLine());
-            double sum = 0.5;
-            int i = 3;
-            while (sum > eps)
+            double sum, i, eps = 0, a;
+            Console.WriteLine("Введите точность: ");
+            eps = Convert.ToDouble(Console.ReadLine());
+            sum = 0.5;
+            i = 3;
+            a = (1/i) - (1/(i + 1));
+            while (a > eps)
             {
-                sum = sum +  (1 / i) - (1 / i + 1);
+                sum += a;
                 i += 2;
+                a = (1 / i) - (1 / i + 1);
             }
-            Console.WriteLine(sum);
+            Console.WriteLine("Сумма ряда = " + sum);
             Console.ReadKey();
         }
     }

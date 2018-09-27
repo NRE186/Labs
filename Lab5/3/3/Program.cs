@@ -7,30 +7,30 @@ namespace _3
     {
         static void Main(string[] args)
         {
+            const int z = 5;
+            const int y = 4;
             List<int> elm = new List<int>();
-            int res = 0;
             int s = 0;
-            int[,] mas = new int[4, 5];
-            Random rnd = new Random();
+            int[,] mas = new int[z, y];
+            Random rnd = new Random(DateTime.Now.Millisecond);
 
             int x = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Первоначальный массив");
 
-            for (int i = 0; i < mas.GetLength(0); i++)
+            for (int i = 0; i < z; i++)
             {
-                for (int j = 0; j < mas.GetLength(1); j++)
+                for (int j = 0; j < y; j++)
                 {
                     mas[i, j] = rnd.Next(0, 100);
                 }
             }
-            for (int i = 0; i < mas.GetLength(0); i++)
+            for (int i = 0; i < z; i++)
             {
-                for (int j = 0; j < mas.GetLength(1); j++)
+                for (int j = 0; j < y; j++)
                 {
                     if (mas[i, j] < x && mas[i,j] % 2 == 0)
                     {
                         elm.Add(mas[i, j]);
-                        res++;
                         s += mas[i, j];
                     }
                     Console.Write(mas[i, j] + " ");
@@ -38,7 +38,6 @@ namespace _3
                 Console.WriteLine();
             }
             Console.WriteLine();
-            Console.WriteLine("Колличество элементов меньших " + x + " и кратных двум - " + res);
             Console.WriteLine("Сумма этих элементов = " + s);
             Console.ReadKey();
         }

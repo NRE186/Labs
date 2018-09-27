@@ -7,27 +7,26 @@ namespace _2
     {
         static void Main(string[] args)
         {
+            const int n = 10;
             List<int> elm = new List<int>();
-            int n = 10,x = 0;
             int[,] mas = new int[n, n];
-            Random rnd = new Random();
+            Random rnd = new Random(DateTime.Now.Millisecond);
 
             Console.WriteLine("Первоначальный массив");
 
-            for (int i = 0; i < mas.GetLength(0); i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < mas.GetLength(0); j++)
+                for (int j = 0; j < n; j++)
                 {
                     mas[i, j] = rnd.Next(-50, 50);
                 }
             }
-            for (int i = 0; i < mas.GetLength(0); i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < mas.GetLength(0); j++)
+                for (int j = 0; j < n; j++)
                 {
                     if(mas[i,j] < 0)
                     {
-                        x++;
                         elm.Add(mas[i,j]);
                     }
                     Console.Write(mas[i, j] + " ");
@@ -35,7 +34,6 @@ namespace _2
                 Console.WriteLine();
             }
             Console.WriteLine();
-            Console.WriteLine("Колличество отрицательных элементов - " + x);
             Console.WriteLine("Отрицательные числа");
             foreach (int s in elm)
             {

@@ -6,18 +6,19 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            int[,] mas = new int[8, 7];
-            Random rnd = new Random();
-
+            const int x = 7;
+            const int y = 8;
+            int[,] mas = new int[x, y];
+            Random rnd = new Random(DateTime.Now.Millisecond);
             Console.WriteLine("Первоначальный массив");
 
-            for (int i = 0; i < mas.GetLength(0); i++)
-                for (int j = 0; j < mas.GetLength(1); j++)
+            for (int i = 0; i < x; i++)
+                for (int j = 0; j < y; j++)
                     mas[i, j] = rnd.Next(-20, 20);
 
-            for (int i = 0; i < mas.GetLength(0); i++)
+            for (int i = 0; i < x; i++)
             {
-                for (int j = 0; j < mas.GetLength(1); j++)
+                for (int j = 0; j < y; j++)
                 {
                     Console.Write(mas[i, j] + " ");
                 }
@@ -25,18 +26,18 @@ namespace ConsoleApplication2
             }
             Console.WriteLine();
             Console.WriteLine("Отсортированный массив");
-            for (var i = 0; i < mas.GetLength(0); i++)
-                for (var j = 0; j < mas.GetLength(1); j++)
-                    for (var k = 0; k < mas.GetLength(1); k++)
+            for (var i = 0; i < x; i++)
+                for (var j = 0; j < y; j++)
+                    for (var k = 0; k < y; k++)
                     {
                         if (mas[i, j] >= mas[i, k]) continue;
                         var temp = mas[i, j];
                         mas[i, j] = mas[i, k];
                         mas[i, k] = temp;
                     }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < x; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < y; j++)
                 {
                     Console.Write(mas[i, j] + " ");
                 }
