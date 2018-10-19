@@ -11,15 +11,16 @@ namespace _2
             const int n = 20;
             int[,] mas = new int[n, n];
             Random rnd = new Random(DateTime.Now.Millisecond);
-            List<int> elm = new List<int>();
-            List<int> elmIndex = new List<int>();
+            List<int> iIndex = new List<int>();
+            List<int> jIndex = new List<int>();
             int res = 1;
-            bool flag = true;
+            int flag = 0;
+            int x = 0;
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    mas[i, j] = rnd.Next(0, 20);
+                    mas[i, j] = rnd.Next(10, 99);
                 }
             }
             //Поиск 4 подряд идущих чисел, у которых произведение > res
@@ -28,19 +29,17 @@ namespace _2
             {
                 for (int j = 0; j < n - 3; j++)
                 {
-                    if (mas[i,j] * mas[i, j + 1] * mas[i, j + 2] * mas[i, j + 3] > res)
+                    if (mas[i, j] * mas[i, j + 1] * mas[i, j + 2] * mas[i, j + 3] > res)
                     {
-                        elm.Clear();
-                        elmIndex.Clear();
+                        iIndex.Clear();
+                        jIndex.Clear();
                         res = mas[i, j] * mas[i, j + 1] * mas[i, j + 2] * mas[i, j + 3];
-                        elm.Add(mas[i, j]);
-                        elm.Add(mas[i, j + 1]);
-                        elm.Add(mas[i, j + 2]);
-                        elm.Add(mas[i, j + 3]);
-                        elmIndex.Add(i);
-                        elmIndex.Add(j);
-                        elmIndex.Add(j+1);
-                        flag = true;
+                        iIndex.Add(i);
+                        jIndex.Add(j);
+                        jIndex.Add(j + 1);
+                        jIndex.Add(j + 2);
+                        jIndex.Add(j + 3);
+                        flag = 1;
                     }
                 }
             }
@@ -51,88 +50,154 @@ namespace _2
                 {
                     if (mas[i, j] * mas[i + 1, j] * mas[i + 2, j] * mas[i + 3, j] > res)
                     {
-                        elm.Clear();
-                        elmIndex.Clear();
+                        iIndex.Clear();
+                        jIndex.Clear();
                         res = mas[i, j] * mas[i + 1, j] * mas[i + 2, j] * mas[i + 3, j];
-                        elm.Add(mas[i, j]);
-                        elm.Add(mas[i + 1, j]);
-                        elm.Add(mas[i + 2, j]);
-                        elm.Add(mas[i + 3, j]);
-                        elmIndex.Add(j);
-                        elmIndex.Add(i);
-                        elmIndex.Add(i + 1);
-                        flag = false;
+                        jIndex.Add(j);
+                        iIndex.Add(i);
+                        iIndex.Add(i + 1);
+                        iIndex.Add(i + 2);
+                        iIndex.Add(i + 3);
+                        flag = 2;
                     }
                 }
             }
             //Поиск справа налево
             for (int i = 0; i < n; i++)
             {
-                for (int j = n-1; j > 2; j--)
+                for (int j = n - 1; j > 2; j--)
                 {
                     if (mas[i, j] * mas[i, j - 1] * mas[i, j - 2] * mas[i, j - 3] > res)
                     {
-                        elm.Clear();
-                        elmIndex.Clear();
+                        iIndex.Clear();
+                        jIndex.Clear();
                         res = mas[i, j] * mas[i, j - 1] * mas[i, j - 2] * mas[i, j - 3];
-                        elm.Add(mas[i, j]);
-                        elm.Add(mas[i, j - 1]);
-                        elm.Add(mas[i, j - 2]);
-                        elm.Add(mas[i, j - 3]);
-                        elmIndex.Add(i);
-                        elmIndex.Add(j);
-                        elmIndex.Add(j - 1);
-                        flag = true;
+                        iIndex.Add(i);
+                        jIndex.Add(j);
+                        jIndex.Add(j - 1);
+                        jIndex.Add(j - 2);
+                        jIndex.Add(j - 3);
+                        flag = 3;
                     }
                 }
             }
             //Поиск снизу вверх
-            for (int i = n-1; i > 2; i--)
+            for (int i = n - 1; i > 2; i--)
             {
                 for (int j = 0; j < n; j++)
                 {
                     if (mas[i, j] * mas[i - 1, j] * mas[i - 2, j] * mas[i - 3, j] > res)
                     {
-                        elm.Clear();
-                        elmIndex.Clear();
+                        iIndex.Clear();
+                        jIndex.Clear();
                         res = mas[i, j] * mas[i - 1, j] * mas[i - 2, j] * mas[i - 3, j];
-                        elm.Add(mas[i, j]);
-                        elm.Add(mas[i - 1, j]);
-                        elm.Add(mas[i - 2, j]);
-                        elm.Add(mas[i - 3, j]);
-                        elmIndex.Add(j);
-                        elmIndex.Add(i);
-                        elmIndex.Add(i - 1);
-                        flag = false;
+                        jIndex.Add(j);
+                        iIndex.Add(i);
+                        iIndex.Add(i - 1);
+                        iIndex.Add(i - 2);
+                        iIndex.Add(i - 3);
+                        flag = 4;
                     }
                 }
             }
             //Вывод массива
-            for (int i = 0; i < n; i++)
+            if (iIndex.Count == 1)
             {
-                for (int j = 0; j < n; j++)
+                for (int i = 0; i < n; i++)
                 {
-                    Write(mas[i, j] + " ");
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (flag == 1)
+                        {
+                            if (i == iIndex[0])
+                            {
+                                if (j == jIndex[0])
+                                {
+                                    while (x < 4)
+                                    {
+                                        ForegroundColor = ConsoleColor.Green;
+                                        x++;
+                                        Write(mas[i, j] + " ");
+                                        if (j != 19)
+                                        {
+                                            j++;
+                                        }
+                                    }
+                                }
+                            }
+                            ForegroundColor = ConsoleColor.Gray;
+                            Write(mas[i, j] + " ");
+                        }
+                        else if (flag == 3)
+                        {
+                            if (i == iIndex[0])
+                            {
+                                if (j == jIndex[3])
+                                {
+                                    while (x < 4)
+                                    {
+                                        ForegroundColor = ConsoleColor.DarkGreen;
+                                        x++;
+                                        Write(mas[i, j] + " ");
+                                        if (j != 19)
+                                        {
+                                            j++;
+                                        }
+                                    }
+                                }
+                            }
+                            ForegroundColor = ConsoleColor.Gray;
+                            Write(mas[i, j] + " ");
+                        }
+                    }
+                    WriteLine();
                 }
-                WriteLine();
-            }
-            WriteLine();
-            if (flag == true)
-            {
-                WriteLine("1 index - i");
             }
             else
             {
-                WriteLine("1 index - j");
-            }
-            foreach (int s in elmIndex)
-            {
-                Write(s + " ");
-            }
-            WriteLine();
-            foreach (int s in elm)
-            {
-                Write(s + " ");
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (flag == 2)
+                        {
+                            x++;
+                            if (j == jIndex[0])
+                            {
+                                if (i == iIndex[0] || i == iIndex[1] || i == iIndex[2] || i == iIndex[3])
+                                {
+                                    ForegroundColor = ConsoleColor.Red;
+                                    Write(mas[i, j] + " ");
+                                    x = 0;
+                                }
+                            }
+                            if (x != 0)
+                            {
+                                ForegroundColor = ConsoleColor.Gray;
+                                Write(mas[i, j] + " ");
+                            }
+                        }
+                        else if (flag == 4)
+                        {
+                            x++;
+                            if (j == jIndex[0])
+                            {
+                                if (i == iIndex[3] || i == iIndex[2] || i == iIndex[1] || i == iIndex[0])
+                                {
+                                    ForegroundColor = ConsoleColor.DarkRed;
+                                    Write(mas[i, j] + " ");
+
+                                }
+                            }
+                            if (x != 0)
+                            {
+                                ForegroundColor = ConsoleColor.Gray;
+                                Write(mas[i, j] + " ");
+                            }
+                        }
+                    }
+                    WriteLine();
+                }
             }
             WriteLine();
             Write(res);
