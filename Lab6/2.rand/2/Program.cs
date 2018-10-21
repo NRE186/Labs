@@ -126,25 +126,25 @@ namespace _2
                 }
             }
             //Поиск по диагонали с правого угла
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < n - 3; i++)
             {
                 for (int j = n - 1; j > 2; j--)
                 {
-                    if (i == j)
+                    if (j == n - i - 1)
                     {
-                        if (mas[i, j] * mas[i - 1, j - 1] * mas[i - 2, j - 2] * mas[i - 3, j - 3] > res)
+                        if (mas[i, j] * mas[i + 1, j - 1] * mas[i + 2, j - 2] * mas[i + 3, j - 3] > res)
                         {
                             iIndex.Clear();
                             jIndex.Clear();
-                            res = mas[i, j] * mas[i - 1, j - 1] * mas[i - 2, j - 2] * mas[i - 3, j - 3];
+                            res = mas[i, j] * mas[i + 1, j - 1] * mas[i + 2, j - 2] * mas[i + 3, j - 3];
                             jIndex.Add(j);
                             jIndex.Add(j - 1);
                             jIndex.Add(j - 2);
                             jIndex.Add(j - 3);
                             iIndex.Add(i);
-                            iIndex.Add(i - 1);
-                            iIndex.Add(i - 2);
-                            iIndex.Add(i - 3);
+                            iIndex.Add(i + 1);
+                            iIndex.Add(i + 2);
+                            iIndex.Add(i + 3);
                             flag = 6;
                         }
                     }
@@ -267,7 +267,7 @@ namespace _2
                         else if (flag == 6)
                         {
                             x++;
-                            if (i == iIndex[3] || i == iIndex[2] || i == iIndex[1] || i == iIndex[0])
+                            if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
                             {
                                 ForegroundColor = ConsoleColor.DarkCyan;
                                 Write(mas[i, j] + " ");
