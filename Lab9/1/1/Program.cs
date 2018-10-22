@@ -66,11 +66,11 @@ namespace _1
 
             List<Committee> needed = new List<Committee>();
             Console.WriteLine("Введите улицу, данные по которой желаете узанать");
-            string s = Console.ReadLine();
+            string str = Console.ReadLine();
 
             foreach (Committee c in committees)
             {
-                if (c.address.Contains(s))
+                if (c.address.Contains(str))
                 {
                     needed.Add(c);
                 }
