@@ -34,8 +34,6 @@ namespace _2
             int res = 1;
             int flag = 0;
             int x = 0;
-            //Поиск 4 подряд идущих чисел, у которых произведение > res
-            //Поиск слева направо
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n - 3; j++)
@@ -54,7 +52,6 @@ namespace _2
                     }
                 }
             }
-            //Поиск сверху вниз
             for (int i = 0; i < n - 3; i++)
             {
                 for (int j = 0; j < n; j++)
@@ -73,45 +70,6 @@ namespace _2
                     }
                 }
             }
-            //Поиск справа налево
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = n - 1; j > 2; j--)
-                {
-                    if (mas[i, j] * mas[i, j - 1] * mas[i, j - 2] * mas[i, j - 3] > res)
-                    {
-                        iIndex.Clear();
-                        jIndex.Clear();
-                        res = mas[i, j] * mas[i, j - 1] * mas[i, j - 2] * mas[i, j - 3];
-                        iIndex.Add(i);
-                        jIndex.Add(j);
-                        jIndex.Add(j - 1);
-                        jIndex.Add(j - 2);
-                        jIndex.Add(j - 3);
-                        flag = 3;
-                    }
-                }
-            }
-            //Поиск снизу вверх
-            for (int i = n - 1; i > 2; i--)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    if (mas[i, j] * mas[i - 1, j] * mas[i - 2, j] * mas[i - 3, j] > res)
-                    {
-                        iIndex.Clear();
-                        jIndex.Clear();
-                        res = mas[i, j] * mas[i - 1, j] * mas[i - 2, j] * mas[i - 3, j];
-                        jIndex.Add(j);
-                        iIndex.Add(i);
-                        iIndex.Add(i - 1);
-                        iIndex.Add(i - 2);
-                        iIndex.Add(i - 3);
-                        flag = 4;
-                    }
-                }
-            }
-            //Поиск по диагонали с левого угла
             for (int i = 0; i < n - 3; i++)
             {
                 for (int j = 0; j < n - 3; j++)
@@ -131,12 +89,11 @@ namespace _2
                             iIndex.Add(i + 1);
                             iIndex.Add(i + 2);
                             iIndex.Add(i + 3);
-                            flag = 5;
+                            flag = 3;
                         }
                     }
                 }
             }
-            //Поиск по диагонали с правого угла
             for (int i = 0; i < n - 3; i++)
             {
                 for (int j = n - 1; j > 2; j--)
@@ -156,53 +113,31 @@ namespace _2
                             iIndex.Add(i + 1);
                             iIndex.Add(i + 2);
                             iIndex.Add(i + 3);
-                            flag = 6;
+                            flag = 4;
                         }
                     }
                 }
             }
-            //Вывод массива
             if (iIndex.Count == 1)
             {
                 for (int i = 0; i < n; i++)
                 {
                     for (int j = 0; j < n; j++)
                     {
+                        x++;
                         if (flag == 1)
                         {
-                            if (i == iIndex[0] && j == jIndex[0])
+                            if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[0] && j == jIndex[1]) || (i == iIndex[0] && j == jIndex[2]) || (i == iIndex[0] && j == jIndex[3]))
                             {
-                                while (x < 4)
-                                {
-                                    ForegroundColor = ConsoleColor.Green;
-                                    x++;
-                                    Write(mas[i, j] + " ");
-                                    if (j != 19)
-                                    {
-                                        j++;
-                                    }
-                                }
+                                ForegroundColor = ConsoleColor.Green;
+                                Write(mas[i, j] + " ");
+                                x = 0;
                             }
-                            ForegroundColor = ConsoleColor.Gray;
-                            Write(mas[i, j] + " ");
-                        }
-                        else if (flag == 3)
-                        {
-                            if (i == iIndex[0] && j == jIndex[3])
+                            if (x != 0)
                             {
-                                while (x < 4)
-                                {
-                                    ForegroundColor = ConsoleColor.DarkGreen;
-                                    x++;
-                                    Write(mas[i, j] + " ");
-                                    if (j != 19)
-                                    {
-                                        j++;
-                                    }
-                                }
+                                ForegroundColor = ConsoleColor.Gray;
+                                Write(mas[i, j] + " ");
                             }
-                            ForegroundColor = ConsoleColor.Gray;
-                            Write(mas[i, j] + " ");
                         }
                     }
                     WriteLine();
@@ -214,32 +149,14 @@ namespace _2
                 {
                     for (int j = 0; j < n; j++)
                     {
+                        x++;
                         if (flag == 2)
                         {
-                            x++;
                             if (j == jIndex[0])
                             {
-                                if (i == iIndex[0] || i == iIndex[1] || i == iIndex[2] || i == iIndex[3])
+                                if ((j == jIndex[0] && i == iIndex[0]) || (j == jIndex[0] && i == iIndex[1]) || (j == jIndex[0] && i == iIndex[2]) || (j == jIndex[0] && i == iIndex[3]))
                                 {
                                     ForegroundColor = ConsoleColor.Red;
-                                    Write(mas[i, j] + " ");
-                                    x = 0;
-                                }
-                            }
-                            if (x != 0)
-                            {
-                                ForegroundColor = ConsoleColor.Gray;
-                                Write(mas[i, j] + " ");
-                            }
-                        }
-                        else if (flag == 4)
-                        {
-                            x++;
-                            if (j == jIndex[0])
-                            {
-                                if (i == iIndex[3] || i == iIndex[2] || i == iIndex[1] || i == iIndex[0])
-                                {
-                                    ForegroundColor = ConsoleColor.DarkRed;
                                     Write(mas[i, j] + " ");
                                     x = 0;
                                 }
@@ -260,9 +177,9 @@ namespace _2
                 {
                     for (int j = 0; j < n; j++)
                     {
-                        if (flag == 5)
+                        x++;
+                        if (flag == 3)
                         {
-                            x++;
                             if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
                             {
                                 ForegroundColor = ConsoleColor.Cyan;
@@ -275,9 +192,8 @@ namespace _2
                                 Write(mas[i, j] + " ");
                             }
                         }
-                        else if (flag == 6)
+                        else if (flag == 4)
                         {
-                            x++;
                             if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
                             {
                                 ForegroundColor = ConsoleColor.DarkCyan;
