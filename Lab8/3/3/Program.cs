@@ -18,7 +18,7 @@ namespace _3
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        string[] split = line.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+                        string[] split = line.Split(new char[] { ' ', ',', '.', ':', '\t' });
                         if (split[0].Length == 1)
                         {
                             Console.WriteLine(line);

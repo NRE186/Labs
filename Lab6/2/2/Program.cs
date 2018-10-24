@@ -118,97 +118,69 @@ namespace _2
                     }
                 }
             }
-            if (iIndex.Count == 1)
+            for (int i = 0; i < n; i++)
             {
-                for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
                 {
-                    for (int j = 0; j < n; j++)
+                    x++;
+                    if (flag == 1)
                     {
-                        x++;
-                        if (flag == 1)
+                        if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[0] && j == jIndex[1]) || (i == iIndex[0] && j == jIndex[2]) || (i == iIndex[0] && j == jIndex[3]))
                         {
-                            if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[0] && j == jIndex[1]) || (i == iIndex[0] && j == jIndex[2]) || (i == iIndex[0] && j == jIndex[3]))
-                            {
-                                ForegroundColor = ConsoleColor.Green;
-                                Write(mas[i, j] + " ");
-                                x = 0;
-                            }
-                            if (x != 0)
-                            {
-                                ForegroundColor = ConsoleColor.Gray;
-                                Write(mas[i, j] + " ");
-                            }
+                            ForegroundColor = ConsoleColor.Green;
+                            Write(mas[i, j] + " ");
+                            x = 0;
+                        }
+                        if (x != 0)
+                        {
+                            ForegroundColor = ConsoleColor.Gray;
+                            Write(mas[i, j] + " ");
                         }
                     }
-                    WriteLine();
-                }
-            }
-            else if (jIndex.Count == 1)
-            {
-                for (int i = 0; i < n; i++)
-                {
-                    for (int j = 0; j < n; j++)
+                    else if (flag == 2)
                     {
-                        x++;
-                        if (flag == 2)
+                        if ((j == jIndex[0] && i == iIndex[0]) || (j == jIndex[0] && i == iIndex[1]) || (j == jIndex[0] && i == iIndex[2]) || (j == jIndex[0] && i == iIndex[3]))
                         {
-                            if (j == jIndex[0])
-                            {
-                                if ((j == jIndex[0] && i == iIndex[0]) || (j == jIndex[0] && i == iIndex[1]) || (j == jIndex[0] && i == iIndex[2]) || (j == jIndex[0] && i == iIndex[3]))
-                                {
-                                    ForegroundColor = ConsoleColor.Red;
-                                    Write(mas[i, j] + " ");
-                                    x = 0;
-                                }
-                            }
-                            if (x != 0)
-                            {
-                                ForegroundColor = ConsoleColor.Gray;
-                                Write(mas[i, j] + " ");
-                            }
+                            ForegroundColor = ConsoleColor.Red;
+                            Write(mas[i, j] + " ");
+                            x = 0;
+                        }
+                        if (x != 0)
+                        {
+                            ForegroundColor = ConsoleColor.Gray;
+                            Write(mas[i, j] + " ");
                         }
                     }
-                    WriteLine();
-                }
-            }
-            else
-            {
-                for (int i = 0; i < n; i++)
-                {
-                    for (int j = 0; j < n; j++)
+                    else if (flag == 3)
                     {
-                        x++;
-                        if (flag == 3)
+                        if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
                         {
-                            if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
-                            {
-                                ForegroundColor = ConsoleColor.Cyan;
-                                Write(mas[i, j] + " ");
-                                x = 0;
-                            }
-                            if (x != 0)
-                            {
-                                ForegroundColor = ConsoleColor.Gray;
-                                Write(mas[i, j] + " ");
-                            }
+                            ForegroundColor = ConsoleColor.Cyan;
+                            Write(mas[i, j] + " ");
+                            x = 0;
                         }
-                        else if (flag == 4)
+                        if (x != 0)
                         {
-                            if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
-                            {
-                                ForegroundColor = ConsoleColor.DarkCyan;
-                                Write(mas[i, j] + " ");
-                                x = 0;
-                            }
-                            if (x != 0)
-                            {
-                                ForegroundColor = ConsoleColor.Gray;
-                                Write(mas[i, j] + " ");
-                            }
+                            ForegroundColor = ConsoleColor.Gray;
+                            Write(mas[i, j] + " ");
                         }
                     }
-                    WriteLine();
+                    else
+                    {
+                        if ((i == iIndex[0] && j == jIndex[0]) || (i == iIndex[1] && j == jIndex[1]) || (i == iIndex[2] && j == jIndex[2]) || (i == iIndex[3] && j == jIndex[3]))
+                        {
+                            ForegroundColor = ConsoleColor.DarkCyan;
+                            Write(mas[i, j] + " ");
+                            x = 0;
+                        }
+                        if (x != 0)
+                        {
+                            ForegroundColor = ConsoleColor.Gray;
+                            Write(mas[i, j] + " ");
+                        }
+                    }
                 }
+                WriteLine();
             }
             ForegroundColor = ConsoleColor.Gray;
             WriteLine();

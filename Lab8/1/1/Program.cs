@@ -16,8 +16,8 @@ namespace _1
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if (line.Contains("1") || line.Contains("2") || line.Contains("3") || line.Contains("4") || line.Contains("5") || line.Contains("6")
-                            || line.Contains("7") || line.Contains("8") || line.Contains("9") || line.Contains("0"))
+                        string pattern = @"\d+";
+                        if (System.Text.RegularExpressions.Regex.IsMatch(line, pattern))
                         {
                             Console.WriteLine(line);
                         }
