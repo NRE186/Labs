@@ -12,7 +12,8 @@ namespace _1
         }
         public void ZeroReverse(int x, int[] a)
         {
-            for(int i = 0; i < a.Length; i++)
+            ShowBin(x);
+            for (int i = 0; i < a.Length; i++)
             {
                 x &= ~(1 << a[i]);
             }
@@ -20,6 +21,7 @@ namespace _1
         }
         public void SwapBits(long s, int[] a)
         {
+            ShowBin(s);
             long x = s;
             //for (int i = 0; i < a.Length/2; i++)
             //{
@@ -37,6 +39,13 @@ namespace _1
             c = (x >> 13) & 1;
             t = (x >> 12) & 1;
             x = x & ~((1 << 13) | (1 << 12)) | (c << 12) | (t << 13);
+            ShowBin(x);
+        }
+        public void Zeroing(long x, long a)
+        {
+            ShowBin(x);
+            for (int i = 31; i > a; i--)
+                x &= ~(1 << (i));
             ShowBin(x);
         }
     }
