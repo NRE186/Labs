@@ -20,7 +20,7 @@ namespace _1
 
             Console.WriteLine("Задание 19");
             x = 58937;
-            bin.Zeroing(x,5);
+            bin.Zero(x,5);
             Console.ReadKey();
         }
     }

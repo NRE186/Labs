@@ -41,7 +41,7 @@ namespace _1
             x = x & ~((1 << 13) | (1 << 12)) | (c << 12) | (t << 13);
             ShowBin(x);
         }
-        public void Zeroing(long x, long a)
+        public void Zero(long x, long a)
         {
             ShowBin(x);
             for (int i = 31; i > a; i--)
