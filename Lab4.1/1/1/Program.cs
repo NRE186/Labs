@@ -12,12 +12,12 @@ namespace _1
             int[] a = { 3, 5, 7 };
             int x = 760;
             bin.ZeroReverse(x,a);
-
+            Console.WriteLine(new String('-', 32));
             Console.WriteLine("Задание 11");
             int[] b = {8, 9, 10, 11, 12, 13 };
             x = 58937;
             bin.SwapBits(x,b);
-
+            Console.WriteLine(new String('-', 32));
             Console.WriteLine("Задание 19");
             x = 58937;
             bin.Zero(x,5);
