@@ -14,9 +14,8 @@ namespace _1
             bin.ZeroReverse(x,a);
             Console.WriteLine(new String('-', 32));
             Console.WriteLine("Задание 11");
-            int[] b = {8, 9, 10, 11, 12, 13 };
             x = 58937;
-            bin.SwapBits(x,b);
+            bin.SwapBits(x);
             Console.WriteLine(new String('-', 32));
             Console.WriteLine("Задание 19");
             x = 58937;

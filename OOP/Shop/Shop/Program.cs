@@ -31,7 +31,8 @@ namespace Shop
             Product[] products = new Product[] { phone, laptop };
             Informer informer = new Informer();
 
-            while (true)
+            double sum = 0;
+            while (user.Balance > sum)
             {
                 Console.WriteLine();
                 Console.WriteLine($"Здравствуйте {user.Name} ваш баланс {user.Balance}");
@@ -39,28 +40,37 @@ namespace Shop
                 for (int i = 0; i < products.Length; i++)
                 {
                     Console.WriteLine($"Товар {i} {products[i].Name} по цене {products[i].Price}");
+                    sum += products[i].Price;
                 }
                 Console.WriteLine("Выберите номер товара и нажмите Enter:");
 
                 string str = Console.ReadLine();
-                int productNumber = Convert.ToInt32(str);
-
-                if (productNumber >= 0 && productNumber < products.Length)
+                if (str != "")
                 {
-                    if (products[productNumber].Price < user.Balance)
+                    int productNumber = Convert.ToInt32(str);
+                    if (productNumber >= 0 && productNumber < products.Length)
                     {
-                        informer.Buy(user, products[productNumber]);
+                        if (products[productNumber].Price < user.Balance)
+                        {
+                            informer.Buy(user, products[productNumber]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("У вас недостаточно средств");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("У вас недостаточно средств");
+                        Console.WriteLine("Таких товаров нет!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Таких товаров нет!");
+                    Console.WriteLine("Вы не ввели число");
                 }
             }
+            Console.WriteLine("Вы больше не можете покупать в нашем магазине");
+            Console.ReadKey();
         }
     }
 }

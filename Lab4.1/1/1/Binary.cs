@@ -19,18 +19,13 @@ namespace _1
             }
             ShowBin(x);
         }
-        public void SwapBits(long s, int[] a)
+        public void SwapBits(long s)
         {
             ShowBin(s);
             long x = s;
-            //for (int i = 0; i < a.Length/2; i++)
-            //{
-            //    long c = (x >> a[i + 1]) & 1;
-            //    long t = (x >> a[i]) & 1;
-            //    x = x & ~((1 << a[i + 1]) | (1 << a[i])) | (c << a[i]) | (t << a[i + 1]);
-            //}
             long c = (x >> 9) & 1;
             long t = (x >> 8) & 1;
+            long tmp;
             x = x & ~((1 << 9) | (1 << 8)) | (c << 8) | (t << 9);
             c = (x >> 11) & 1;
             t = (x >> 10) & 1;
