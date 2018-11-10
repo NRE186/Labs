@@ -19,14 +19,14 @@ namespace _1
             }
             ShowBin(x);
         }
-        public void SwapBits(long s)
+        public void SwapBits(long x)
         {
-            ShowBin(s);
-            long x = s;
-            long c = (x >> 9) & 1;
-            long t = (x >> 8) & 1;
-            long tmp;
+            ShowBin(x);
+            long c, t;
+            c = (x >> 9) & 1;
+            t = (x >> 8) & 1;
             x = x & ~((1 << 9) | (1 << 8)) | (c << 8) | (t << 9);
+            ShowBin(x);
             c = (x >> 11) & 1;
             t = (x >> 10) & 1;
             x = x & ~((1 << 11) | (1 << 10)) | (c << 10) | (t << 11);
