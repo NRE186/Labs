@@ -4,10 +4,10 @@ namespace _1
 {
     class Program
     {
-        static void Main(string[] args)
+        static DateTime start;
+        static void  Main(string[] args)
         {
             Binary bin = new Binary();
-
             Console.WriteLine("Задание 3");
             int[] a = { 3, 5, 7 };
             int x = 760;

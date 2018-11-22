@@ -4,9 +4,9 @@ namespace _1
 {
     class Binary
     {
-        public void ShowBin(long x)
+        public static void ShowBin(long x)
         {
-            for (int i = 31; i >= 0; i--)
+           for (int i = 31; i >= 0; i--)
                 Console.Write((x >> i) & 1);
             Console.WriteLine();
         }
@@ -26,7 +26,6 @@ namespace _1
             c = (x >> 9) & 1;
             t = (x >> 8) & 1;
             x = x & ~((1 << 9) | (1 << 8)) | (c << 8) | (t << 9);
-            ShowBin(x);
             c = (x >> 11) & 1;
             t = (x >> 10) & 1;
             x = x & ~((1 << 11) | (1 << 10)) | (c << 10) | (t << 11);

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1DB06369-0D0C-45EB-AF76-B75431E5F2DC}</ProjectGuid>
+    <ProjectGuid>{83804068-67AB-4535-AC06-F7ADC60DA9B9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Shop</RootNamespace>
-    <AssemblyName>Shop</AssemblyName>
+    <RootNamespace>SerializedData</RootNamespace>
+    <AssemblyName>SerializedData</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,17 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Informer.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="Products\Laptop.cs" />
-    <Compile Include="Products\Phone.cs" />
+    <Compile Include="Cars.cs" />
+    <Compile Include="Deserializable.cs" />
+    <Compile Include="LoadData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
