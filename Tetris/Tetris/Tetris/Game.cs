@@ -29,15 +29,31 @@ namespace Tetris
                 Console.CursorLeft = Width / 2 + 1;
                 field[Console.CursorLeft, Console.CursorTop] = 1;
                 Console.Write(field[Console.CursorLeft, Console.CursorTop]);
-                if (Console.CursorTop != x-1)
+                if (Console.CursorTop != x - 1)
                 {
-                    for (; i < Width; i++)
+                    if (x == 31)
                     {
-                        //Thread.Sleep(5);
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.CursorLeft = i;
-                        field[Console.CursorLeft, Console.CursorTop] = 0;
-                        Console.Write(field[Console.CursorLeft, Console.CursorTop]);
+                        for (; i < Width; i++)
+                        {
+                            Thread.Sleep(5);
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.CursorLeft = i;
+                            field[Console.CursorLeft, Console.CursorTop] = 0;
+                            Console.Write(field[Console.CursorLeft, Console.CursorTop]);
+                        }
+                    }
+                    else {
+                        if (field[Console.CursorLeft, Console.CursorTop + 1] != 1)
+                        {
+                            for (; i < Width; i++)
+                            {
+                                Thread.Sleep(5);
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.CursorLeft = i;
+                                field[Console.CursorLeft, Console.CursorTop] = 0;
+                                Console.Write(field[Console.CursorLeft, Console.CursorTop]);
+                            }
+                        }
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Gray;
