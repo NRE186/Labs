@@ -6,6 +6,7 @@ namespace Tetris
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             Console.WindowHeight = 31;
             StartScreen screen = new StartScreen
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Tetris
 {
@@ -13,33 +14,39 @@ namespace Tetris
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.Clear();
-            DrawArea();
             while (true)
             {
                 Spawn();
             }
         }
-        public void DrawArea()
-        {
-            Console.CursorTop = Height - 1;
-            Console.Write(new String('-', Width));
-            Console.CursorTop = 0;
-            Console.CursorLeft = 0;
-        }
         public void Spawn()
         {
-            char[,] field = new char[Width, Height];
-            while (Console.CursorTop != 30)
+            int x = 31;
+            int[,] field = new int[Width, Height];
+            while (field[41,1] != 1 && Console.CursorTop < 31)
             {
+                int i = 0;
                 Console.CursorLeft = Width / 2 + 1;
-                field[Console.CursorLeft, Console.CursorTop] = '#';
+                field[Console.CursorLeft, Console.CursorTop] = 1;
                 Console.Write(field[Console.CursorLeft, Console.CursorTop]);
-                Console.CursorTop++;
-                field[Console.CursorLeft - 1, Console.CursorTop - 1] = '1';
-                if (Console.CursorTop != 30)
+                if (Console.CursorTop != x-1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(field[Console.CursorLeft - 1, Console.CursorTop - 1]);
+                    for (; i < Width; i++)
+                    {
+                        //Thread.Sleep(5);
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.CursorLeft = i;
+                        field[Console.CursorLeft, Console.CursorTop] = 0;
+                        Console.Write(field[Console.CursorLeft, Console.CursorTop]);
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.CursorTop++;
+                i = 0;
+                if (Console.CursorTop == x)
+                {
+                    Console.CursorTop = 0;
+                    x--;
                 }
             }
         }
