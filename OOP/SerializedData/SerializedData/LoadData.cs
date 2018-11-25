@@ -16,10 +16,16 @@ namespace SerializedData
                 {
                     data = sr.ReadToEnd();
                 }
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Чтение файла завершено");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine();
             }
             catch (Exception e)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(e.Message);
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
             return data;
         }

@@ -1,0 +1,22 @@
+{
+  "Cars": [
+    {
+      "Brand": "Mercedes",
+      "Model": "E-200 Coupe",
+      "Price": "244400000",
+      "Year": "2018"
+    },
+    {
+      "Brand": "Mercedes",
+      "Model": "G65",
+      "Year": "2018",
+      "Price": "443123453123"
+    },
+    {
+      "Brand": "Mercedes",
+      "Model": "C-180",
+      "Year": "2018",
+      "Price": "4531200"
+    }
+  ]
+}
