@@ -9,25 +9,41 @@ namespace SerializedData
         public string Path { get; set; }
         public string LoadingData()
         {
-            string data = "";
-            try
+            if (Path.Contains(".json"))
             {
-                using (StreamReader sr = new StreamReader(Path, Encoding.Default))
+                string data = "";
+                try
                 {
-                    data = sr.ReadToEnd();
+                    using (StreamReader sr = new StreamReader(Path, Encoding.Default))
+                    {
+                        data = sr.ReadToEnd();
+                    }
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Чтение файла завершено");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    if (data == "")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Информация в файле отсутствует");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    Console.WriteLine();
                 }
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Чтение файла завершено");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine();
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(e.Message);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                return data;
             }
-            catch (Exception e)
+            else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Файл имеет неправильное расширение");
                 Console.ForegroundColor = ConsoleColor.Gray;
+                return null;
             }
-            return data;
         }
     }
 }

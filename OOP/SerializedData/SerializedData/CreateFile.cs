@@ -8,10 +8,10 @@ namespace SerializedData
     {
         public string Path { get; set; }
         public string Text { get; set; }
-
+        public string FileName { get; set; }
         public void Create()
         {
-            string file = Path + "mercedes.json";
+            string file = Path + FileName + ".json";
             try{
                 if (File.Exists(file))
                 {
@@ -24,7 +24,7 @@ namespace SerializedData
                 }
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Файл успешно создан");
+                Console.WriteLine("Файл {0}.json успешно создан",FileName);
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
             catch(Exception e)
