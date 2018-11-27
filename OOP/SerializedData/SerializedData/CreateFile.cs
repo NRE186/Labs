@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SerializedData
 {
-    class CreateFile
+    class CreateFile:MessageSender
     {
         public string Path { get; set; }
         public string Text { get; set; }
@@ -22,16 +22,14 @@ namespace SerializedData
                     byte[] text = new UTF8Encoding(true).GetBytes(Text);
                     fs.Write(text, 0, text.Length);
                 }
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Файл {0}.json успешно создан",FileName);
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Файл {0}.json успешно создан", FileName);
+                //TODO:
+                //Right method for MessageSend
+                //MessageSend("Green", "Файл {0}.json успешно создан", FileName);
             }
             catch(Exception e)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(e.Message);
-                Console.ForegroundColor = ConsoleColor.Gray;
+                MessageSend("Red", e.Message);
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SerializedData
 {
-    class LoadData
+    class LoadData:MessageSender
     {
         public string Path { get; set; }
         public string LoadingData()
@@ -18,30 +18,22 @@ namespace SerializedData
                     {
                         data = sr.ReadToEnd();
                     }
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Чтение файла завершено");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    MessageSend("Green", "Чтение файла завершено");
                     if (data == "")
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Информация в файле отсутствует");
-                        Console.ForegroundColor = ConsoleColor.Gray;
+                        MessageSend("Red","Файл пуст");
                     }
                     Console.WriteLine();
                 }
                 catch (Exception e)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(e.Message);
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    MessageSend("Red", e.Message);
                 }
                 return data;
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Файл имеет неправильное расширение");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                MessageSend("Red", "Файл имеет неправильное расширение");
                 return null;
             }
         }

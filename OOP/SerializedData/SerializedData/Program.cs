@@ -6,6 +6,7 @@ namespace SerializedData
     {
         static void Main(string[] args)
         {
+            MessageSender sender = new MessageSender();
             LoadData load = new LoadData
             {
                 Path = @"W:\C#\Labs\Labs\OOP\SerializedData\Files\bmw.json"
@@ -21,16 +22,12 @@ namespace SerializedData
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("deserializable is null");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    sender.MessageSend("Red", "deserializable is null");
                 }
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("load is null");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                sender.MessageSend("Red", "load is null");
             }
             CarsList myCollection = new CarsList
             {
@@ -76,23 +73,17 @@ namespace SerializedData
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("create is null");
-                        Console.ForegroundColor = ConsoleColor.Gray;
+                        sender.MessageSend("Red", "create is null");
                     }
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("serialized is null");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    sender.MessageSend("Red", "serializable is null");
                 }
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("myCollection is null");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                sender.MessageSend("Red", "myCollection is null");
             }
             Console.ReadKey();
         }

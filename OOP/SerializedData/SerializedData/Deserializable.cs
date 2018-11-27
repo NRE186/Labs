@@ -3,14 +3,21 @@ using System;
 
 namespace SerializedData
 {
-    class Deserializable
+    class Deserializable:MessageSender
     {
         public void DeserializableData(string json)
         {
             CarsList newCar = JsonConvert.DeserializeObject<CarsList>(json);
-            foreach (var car in newCar.Cars)
+            if (!(newCar is null))
             {
-                Console.WriteLine(" " + car.Brand + "    " + car.Model + "     " + car.Year + "   " + car.Price);
+                foreach (var car in newCar.Cars)
+                {
+                    Console.WriteLine(" " + car.Brand + "    " + car.Model + "     " + car.Year + "   " + car.Price);
+                }
+            }
+            else
+            {
+                MessageSend("Red", "newCar is null");
             }
         }
     }
