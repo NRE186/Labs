@@ -2,7 +2,7 @@
 
 namespace SerializedData
 {
-    class Serialized
+    public class Serialized
     {
         public string SerializedData(object collection)
         {

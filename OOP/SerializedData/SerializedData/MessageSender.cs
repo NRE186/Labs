@@ -2,7 +2,7 @@
 
 namespace SerializedData
 {
-    class MessageSender
+    public class MessageSender
     {
         public virtual void MessageSend(string color, string message)
         {

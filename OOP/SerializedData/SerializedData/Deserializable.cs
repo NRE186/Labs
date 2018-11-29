@@ -3,7 +3,7 @@ using System;
 
 namespace SerializedData
 {
-    class Deserializable:MessageSender
+    public class Deserializable:MessageSender
     {
         public void DeserializableData(string json)
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SerializedData
 {
-    class LoadData:MessageSender
+    public class LoadData:MessageSender
     {
         public string Path { get; set; }
         public string LoadingData()
@@ -22,14 +22,16 @@ namespace SerializedData
                     if (data == "")
                     {
                         MessageSend("Red","Файл пуст");
+                        data = "Файл пуст";
                     }
                     Console.WriteLine();
+                    return data;
                 }
                 catch (Exception e)
                 {
                     MessageSend("Red", e.Message);
+                    return null;
                 }
-                return data;
             }
             else
             {
