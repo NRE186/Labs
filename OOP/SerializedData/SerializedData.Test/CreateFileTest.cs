@@ -8,11 +8,7 @@ namespace SerializedData.Test
         [TestMethod]
         public void CreateFileEmpty()
         {
-            CreateFile create = new CreateFile {
-                Path = @"W:\C#\Labs\Labs\OOP\SerializedData\TestFiles\",
-                Text = "",
-                FileName = "1"
-            };
+         
         }
     }
 }
