@@ -29,43 +29,22 @@ namespace SerializedData
             {
                 sender.MessageSend("Red", "load is null");
             }
-            CarsList myCollection = new CarsList
+            UserMessage userMessage = new UserMessage
             {
-                Cars = new Car[3]
+                Name = "Name",
+                Message = "Text"
             };
-            if (!(myCollection is null))
+            if (!(userMessage is null))
             {
-
-                myCollection.Cars[0] = new Car()
-                {
-                    Brand = "Lada",
-                    Model = "2114",
-                    Year = 2005,
-                    Price = 222442
-                };
-                myCollection.Cars[1] = new Car()
-                {
-                    Brand = "Lada",
-                    Model = "2110",
-                    Year = 2003,
-                    Price = 42542
-                };
-                myCollection.Cars[2] = new Car()
-                {
-                    Brand = "Lada",
-                    Model = "2107",
-                    Year = 2003,
-                    Price = 454545
-                };
                 Serialized serialiezed = new Serialized();
                 if (!(serialiezed is null))
                 {
-                    string text = serialiezed.SerializedData(myCollection);
+                    string text = serialiezed.SerializedData(userMessage);
                     CreateFile create = new CreateFile
                     {
                         Path = @"W:\C#\Labs\Labs\OOP\SerializedData\Files\",
                         Text = text,
-                        FileName = "lada"
+                        FileName = "user"
                     };
                     if (!(serialiezed is null))
                     {
