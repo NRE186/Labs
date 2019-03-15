@@ -6,23 +6,24 @@ namespace SerializedData
 {
     public class CreateFile:MessageSender
     {
-        public string Path { get; set; }
         public string Text { get; set; }
         public string FileName { get; set; }
         public void Create()
         {
-            string file = Path + FileName + ".json";
+            string path = @"Отчёт\";
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            if (!dirInfo.Exists)
+            {
+                dirInfo.Create();
+            }
+            string file = path + FileName + ".json";
             try{
                 if (Text != "")
                 {
-                    if (File.Exists(file))
+                    using (StreamWriter sw = new StreamWriter(file, true, System.Text.Encoding.Default))
                     {
-                        File.Delete(file);
-                    }
-                    using (FileStream fs = File.Create(file))
-                    {
-                        byte[] text = new UTF8Encoding(true).GetBytes(Text);
-                        fs.Write(text, 0, text.Length);
+                        sw.WriteLine("Writing");
+                        sw.Write(4.5);
                     }
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Green;

@@ -32,7 +32,8 @@ namespace SerializedData
             UserMessage userMessage = new UserMessage
             {
                 Name = "Name",
-                Message = "Text"
+                Message = "Text",
+                Date = DateTime.Now.Date
             };
             if (!(userMessage is null))
             {
@@ -42,7 +43,6 @@ namespace SerializedData
                     string text = serialiezed.SerializedData(userMessage);
                     CreateFile create = new CreateFile
                     {
-                        Path = @"W:\C#\Labs\Labs\OOP\SerializedData\Files\",
                         Text = text,
                         FileName = "user"
                     };
